@@ -28,31 +28,34 @@
     width: 100%;
   }
 
-  /* 標題與資訊區 */
+  /* 標題與資訊區 - 帶有 bg.jpg 背景與字體清晰遮罩 */
   .header-card {
-    background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('bg.jpg') center center / cover no-repeat;
     border-radius: 20px;
-    padding: 18px 16px;
-    box-shadow: 0 4px 20px rgba(244, 63, 94, 0.08);
+    padding: 24px 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     margin-bottom: 14px;
-    border: 1px solid #fecdd3;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     width: 100%;
+    color: #ffffff;
   }
 
   .header-title { 
-    font-size: 22px; 
+    font-size: 24px; 
     font-weight: 800; 
-    color: #9f1239; 
+    color: #ffffff; 
     margin: 0 0 4px 0; 
     letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
   }
   
   .header-subtitle { 
-    color: #e11d48; 
+    color: #f1f5f9; 
     font-size: 13px; 
     margin: 6px 0 0 0; 
     font-weight: 500; 
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
   }
   
   /* 搜尋框卡片 */
@@ -126,15 +129,16 @@
     background: #f8fafc; 
   }
 
-  /* 宴會廳主卡片 */
+  /* 宴會廳主卡片：增加內距，給發光效果預留空間防裁切 */
   .card { 
     background: #ffffff; 
     border-radius: 20px; 
-    padding: 16px 12px; 
+    padding: 18px 14px 22px 14px; 
     margin-bottom: 14px; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     border: 1px solid #f1f5f9;
     width: 100%;
+    overflow: visible; /* 確保卡片本身不裁切內部元素 */
   }
 
   /* 主舞台樣式 */
@@ -146,7 +150,7 @@
     border-radius: 30px;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     letter-spacing: 3px;
     width: 100%;
     max-width: 260px;
@@ -167,46 +171,46 @@
     border-radius: 50%;
   }
 
-  /* 座位圖外框：強制滿版、絕對不允許橫向捲動 */
+  /* 座位圖外框：取消隱藏溢出，改為預留安全邊距 */
   .seating-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    overflow: hidden;
-    padding: 4px 0;
+    overflow: visible; 
+    padding: 6px 4px;
   }
 
   .seating { 
     display: flex; 
     flex-direction: column; 
     width: 100%;
-    max-width: 420px; /* 限制最大寬度，在大螢幕平板上也不會過開 */
+    max-width: 400px; 
     margin: 0 auto;
-    gap: 5px; 
+    gap: 8px; /* 增加行距，避免上下桌子的發光邊緣互相干涉 */
   }
 
-  /* 核心：標準 7 欄網格排版，確保跨所有手機螢幕尺寸完全等比例、不跑版 */
+  /* 標準 7 欄網格排版 */
   .row { 
     display: grid; 
     grid-template-columns: repeat(7, 1fr); 
     width: 100%; 
-    gap: 4px; 
+    gap: 6px; /* 增加間距讓光暈完全展開 */
     align-items: center; 
     justify-items: center; 
   }
 
-  /* 座位圓圈樣式：使用 aspect-ratio 確保完美正圓，大小隨螢幕自適應 */
+  /* 座位圓圈樣式 */
   .table { 
     width: 100%;
     aspect-ratio: 1 / 1; 
-    max-width: 46px; 
+    max-width: 44px; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     border-radius: 50%; 
     border: 1.5px solid #e2e8f0; 
     background: #ffffff; 
-    font-size: clamp(9px, 2.8vw, 12px); 
+    font-size: clamp(9px, 2.7vw, 12px); 
     font-weight: bold; 
     color: #475569; 
     text-align: center; 
@@ -215,21 +219,21 @@
   }
 
   .table.main { 
-    max-width: 52px; 
+    max-width: 50px; 
     border: 2px solid #ff607a;
     background: radial-gradient(circle at 60% 30%, #ffb6c1 0%, #ff6b81 100%);
     box-shadow: 0 3px 10px rgba(244, 63, 94, 0.35);
     color: #ffffff;
-    font-size: clamp(10px, 3vw, 13px);
+    font-size: clamp(10px, 2.9vw, 13px);
   }
   
   .table.vip { 
-    max-width: 48px; 
+    max-width: 46px; 
     border: 2px solid #8b5cf6;
     background: radial-gradient(circle at 50% 30%, #d8b4fe 0%, #7c3aed 100%);
     box-shadow: 0 3px 10px rgba(139, 92, 246, 0.35);
     color: #ffffff;
-    font-size: clamp(10px, 2.9vw, 12px);
+    font-size: clamp(10px, 2.8vw, 12px);
   }
 
   /* 走道空格與隱藏空白定位格 */
@@ -243,16 +247,16 @@
     visibility: hidden;
   }
 
-  /* 發光藍色高亮定位格：安全內縮與層級控制，絕對不會被卡片邊緣切邊 */
+  /* 發光藍色高亮定位格：提升 z-index 並確保光暈完整不被切邊 */
   .table.highlight { 
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important; 
     color: white !important; 
     border-width: 2.5px !important;
     border-style: solid !important;
     border-color: #ffffff !important;
-    transform: scale(1.06);
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 4px rgba(0, 0, 0, 0.2) !important; 
-    z-index: 20; 
+    transform: scale(1.05);
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.9), 0 0 4px rgba(0, 0, 0, 0.2) !important; 
+    z-index: 30; 
   }
 
   .badge { 
@@ -270,7 +274,7 @@
     display: flex; 
     justify-content: center; 
     gap: 10px; 
-    margin-top: 14px; 
+    margin-top: 16px; 
     font-size: 11px; 
     color: #64748b; 
     flex-wrap: wrap;
@@ -298,10 +302,10 @@
 <body>
 
 <div class="container">
-  <!-- 上方標題與資訊區塊 -->
+  <!-- 上方標題與資訊區塊 (bg.jpg 背景) -->
   <div class="header-card">
     <h1 class="header-title">駿葳 & 泯霏</h1>
-    <div style="font-size: 15px; font-weight: 700; color: #881337; margin-top: 2px;">婚宴座位查詢系統</div>
+    <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-top: 2px; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">婚宴座位查詢系統</div>
     <div class="header-subtitle">歡迎蒞臨！請輸入您的姓名、或桌號</div>
   </div>
 
@@ -345,7 +349,7 @@
 <script>
 let quests = [];
 
-/* 標準 7 欄網格座位對應陣列（透過空字串 '' 確保所有裝置左右對稱與完美對齊） */
+/* 標準 7 欄網格座位對應陣列 */
 const seatingLayoutData = [
   ['', '貴賓A', '', '主桌', '', '貴賓B', ''],
   ['01', '02', '03', 'aisle', '04', '05', '06'],
