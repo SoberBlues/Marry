@@ -28,9 +28,9 @@
     width: 100%;
   }
 
-  /* 上方標題與資訊區：遮罩調淡至 0.15，讓背景圖片更亮 */
+  /* 上方標題與資訊區：已移除遮罩，呈現 bg.jpg 圖片最原始、最亮的狀態 */
   .header-card {
-    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('bg.jpg') center center / cover no-repeat;
+    background: url('bg.jpg') center center / cover no-repeat;
     border-radius: 20px;
     padding: 24px 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -246,7 +246,7 @@
     visibility: hidden;
   }
 
-  /* 發光藍色高亮定位格 */
+  /* 發光藍色高亮定位格（已將外框與光暈範圍縮小） */
   .table.highlight { 
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important; 
     color: white !important; 
@@ -301,7 +301,7 @@
 <body>
 
 <div class="container">
-  <!-- 上方標題與資訊區塊 -->
+  <!-- 上方標題與資訊區塊：已移除遮罩，呈現圖片原本最亮的樣子 -->
   <div class="header-card">
     <h1 class="header-title">駿葳 & 泯霏</h1>
     <div style="font-size: 15px; font-weight: 700; color: #ffffff; margin-top: 2px; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">婚宴座位查詢系統</div>
